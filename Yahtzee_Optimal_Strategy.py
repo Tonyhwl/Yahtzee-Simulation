@@ -1,18 +1,3 @@
-#26/07/25 Created Yahtzee Simulation
-#Added re-rolling, score categories
-#29/07/2025
-#Added category verification
-#30/07/2025 - 5/08/2025
-#Implemented Markov Decision Processes and Dynamic Programming to efficiently automate an optimal re-roll
-#Finished 1-round game of Yahtzee (Automated and Manual)
-#5/08/2025-7/08/2025
-#Finished adding heatmap visualisation for EV while keeping dice 1,2,5 fixed.
-#8/08/2025 - 14/08/2025
-#Imported multiprocessing for faster run time
-#Implemented proper bellman backup for full dynamic programming instead of Monte Carlo approximation
-#15/08/2025
-#Implemented a random baseline strategy for benchmarking
-
 #import libraries
 import random
 import itertools
@@ -322,6 +307,7 @@ if __name__ == '__main__':
     # score for score unpacks each tuple so score is the float EV and _ discards category
     average_ev = sum(game_scores) / len(game_scores)
     print(f'Average game EV due to optimal re-rolling: {round(average_ev, 2)}')
+
 
 
 
