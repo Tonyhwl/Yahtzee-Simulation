@@ -23,20 +23,24 @@ Average game EV due to optimal re-rolling: 28.5
 Average game EV due to random re-rolling: 20.1
 Overall increase: +42%
 
-## Timeline
-26/07/25 Created Yahtzee Simulation
-#Added re-rolling, score categories
-29/07/2025
-Added category verification
-30/07/2025 - 5/08/2025
-Implemented Markov Decision Processes and Dynamic Programming to efficiently automate an optimal re-roll
-Finished 1-round game of Yahtzee (Automated and Manual)
-5/08/2025-7/08/2025
-Finished adding heatmap visualisation for EV while keeping dice 1,2,5 fixed.
-8/08/2025 - 14/08/2025
-Imported multiprocessing for faster run time
-Implemented proper bellman backup for full dynamic programming instead of Monte Carlo approximation
-15/08/2025
-Implemented a random baseline strategy for benchmarking
+## Project Timeline
+
+- **26/07/2025** – Created Yahtzee Simulation  
+  - Added re-rolling, score categories  
+
+- **29/07/2025** – Added category verification  
+
+- **30/07/2025 – 05/08/2025**  
+  - Implemented Markov Decision Processes and Dynamic Programming to efficiently automate an optimal re-roll  
+  - Finished 1-round game of Yahtzee (Automated and Manual)  
+
+- **05/08/2025 – 07/08/2025**  
+  - Finished adding heatmap visualisation for EV while keeping dice 1,2,5 fixed  
+
+- **08/08/2025 – 14/08/2025**  
+  - Imported multiprocessing for faster runtime  
+  - Implemented proper Bellman backup for full dynamic programming instead of Monte Carlo approximation  
+
+- **15/08/2025** – Implemented a random baseline strategy for benchmarking 
 
 
