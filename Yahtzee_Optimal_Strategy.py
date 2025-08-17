@@ -8,142 +8,6 @@ dice_state = []
 position_list = []
 game_scores = []
 
-#setting up dictionary and values for lower score categories and checking
-lower_score_card = {
-    'Aces' : 1,
-    'Twos' : 2,
-    'Threes' : 3,
-    'Fours' : 4,
-    'Fives' : 5,
-    'Sixes' : 6,
-}
-
-#setting up dictionary for checking upper score categories
-upper_score_card = {
-    '3 of a Kind' : 0,
-    '4 of a Kind' : 0,
-    'Full House' : 0,
-    'Small Straight' : 0,
-    'Large Straight' : 0,
-    'Yahtzee' : 0,
-    'Chance' : 0
-}
-
-#initial roll of dice as round 1
-def roll_dice():
-    dice_state.clear()
-    for i in range(5):
-        dice_number = 0
-        dice_number= random.randint(1,6)
-        dice_state.append(dice_number )
-    print('You rolled: ', dice_state)
-
-#user re-rolling for a new combination
-def change_state():
-    dice_number = 0
-    position =  input('Which position would you like to change?')
-    if position == 'none' or position == 'None':
-        print('You rolled: ', dice_state)
-    else:
-        position_list = list(map(int, position.split(',')))
-        for n in range(1,6):
-            if n in position_list:
-                dice_number = random.randint(1, 6)
-                print(dice_number)
-                dice_state[n - 1] = dice_number
-        print('You rolled: ', dice_state)
-
-#checking for 3 of a Kind
-def is_3_of_a_Kind():
-    # 'Counter' creates a frequency dictionary of how many times a number appears
-    # '.values()' returns the counts [1,1,3]
-    #'for' statement checks if every item in the list is greater than or equal to 3
-    for count in Counter(dice_state).values():
-        if count >= 3:
-            return True
-    return False
-
-#checking for 4 of a Kind
-def is_4_of_a_Kind():
-    for count in Counter(dice_state).values():
-        if count >= 4:
-            return True
-    return False
-
-#checking for Full House
-def is_Full_House():
-    counts = Counter(dice_state).values()
-    return sorted(counts) == [2,3]
-
-#checking for Small Straight
-def is_Small_Straight():
-    #removes any duplicates in the 5 dices
-    unique = set(dice_state)
-    #setting up the list of possible small straights
-    small_straights = [{1, 2, 3, 4}, {2, 3, 4, 5}, {3, 4, 5, 6}]
-    #checks if the unique dice state matches with any of the straights (if it does, returns True)
-    for small_straight in small_straights:
-        if small_straight.issubset(unique):
-            return True
-    return False
-
-#checking for Large Straight
-def is_Large_Straight():
-    unique = set(dice_state)
-    large_straights = [{1,2,3,4,5},{2,3,4,5,6}]
-    for large_straight in large_straights:
-        if large_straight.issubset(unique):
-            return True
-    return False
-
-#checking for 5 of a Kind or Yahtzee
-def is_Yahtzee():
-    counts = Counter(dice_state).values()
-    return counts == [5]
-
-#user selects a category based on their final combination of dice
-def category_selection():
-    valid_category = False
-    scores = []
-    category_choice = input('What category would you like to put your final roll in?')
-    while not valid_category:
-        if category_choice in upper_score_card:
-            if category_choice == '3 of a Kind' and is_3_of_a_Kind() == True:
-                scores.append(sum(dice_state))
-                valid_category = True
-            elif category_choice == '4 of a Kind' and is_4_of_a_Kind() == True:
-                scores.append(sum(dice_state))
-                valid_category = True
-            elif category_choice == 'Chance':
-                scores.append(sum(dice_state))
-                valid_category = True
-            elif category_choice == 'Full House' and is_Full_House() == True:
-                scores.append(25)
-            elif category_choice == 'Small Straight' and is_Small_Straight() == True:
-                scores.append(30)
-            elif category_choice == 'Large Straight' and is_Large_Straight() == True:
-                scores.append(40)
-            elif category_choice == 'Yahtzee' and is_Yahtzee() == True:
-                scores.append(50)
-            else:
-                print('Invalid category')
-                valid_category = False
-                category_choice = input('What category would you like to put your final roll in?')
-
-
-        elif category_choice in lower_score_card:
-            for j in range (0,5):
-                if lower_score_card[category_choice] == dice_state[j]:
-                    scores.append(lower_score_card[category_choice])
-            valid_category = True
-
-        else:
-            print('Invalid category')
-            valid_category = False
-            category_choice = input('What category would you like to put your final roll in?')
-
-    return scores
-
 #automated best case category based on scores (no need for True/False validation based on input)
 def score_roll(dice):
     # returns the best score based on current dice state
@@ -276,25 +140,11 @@ def reroll_dice(start,best_mask):
     start = tuple(temp_list)
     return start
 
-#new simulation run w/o printing
+#new simulation run w/o printing every result
 def simulation(_):
     start = tuple(random.randint(1, 6) for _ in range(5))
     best_ev, _, _ = V(start, 2)
     return best_ev
-
-#main run - user input run
-def user_main():
-    roll_dice()
-    for i in range (2):
-        change_state()
-    scores = category_selection()
-    print('Your score is: ', scores)
-
-#choice = input('Would you like an automated run or manual? (a/m)')
-#if choice == 'a':
-    #simulation()
-#elif choice == 'm':
-    #user_main()
 
 import multiprocessing as mp
 
