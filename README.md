@@ -7,12 +7,12 @@ This project models the game of Yahtzee as a Markov Decision Process (MDP) to co
 - Full MDP implementation with Bellman backups
 - Optimal reroll logic based on expected value
 - Manual and automated simulation modes
-- Efficient performance via `@lru_cache` and `multiprocessing`
+- Efficient performance via `@lru_cache` 
 
 ## Technologies
 
 - Python 3.13
-- Standard libraries: `itertools`, `collections`, `functools`, `multiprocessing`
+- Standard libraries: `itertools`, `collections`, `functools`
 
 ## Purpose
 
