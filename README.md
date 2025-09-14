@@ -20,8 +20,8 @@ Developed as a demonstration of applied probability, optimisation, and algorithm
 
 ## Sample Output
 Average game EV due to optimal re-rolling: 28.5
-Average game EV due to random re-rolling: 20.1
-Overall increase: +42%
+Average game EV due to random re-rolling: 21.1
+Overall increase: +39%
 
 ## Project Timeline
 
