@@ -19,9 +19,9 @@ This project models the game of Yahtzee as a Markov Decision Process (MDP) to co
 Developed as a demonstration of applied probability, optimisation, and algorithmic decision-making, relevant to strategy modeling.
 
 ## Sample Output
-Average game EV due to optimal re-rolling: 28.5
-Average game EV due to random re-rolling: 21.1
-Overall increase: +39%
+Average game EV due to optimal policy 28.5
+Average game EV due to greedy policy: 21.1
+Overall increase: +35%
 
 ## Project Timeline
 
@@ -41,6 +41,6 @@ Overall increase: +39%
   - Imported multiprocessing for faster runtime  
   - Implemented proper Bellman backup for full dynamic programming instead of Monte Carlo approximation  
 
-- **15/08/2025** – Implemented a random baseline strategy for benchmarking 
+- **15/08/2025** – Implemented a greedy baseline strategy for benchmarking 
 
 
